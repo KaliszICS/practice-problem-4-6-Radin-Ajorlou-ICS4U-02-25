@@ -16,6 +16,7 @@ class Person{
         this.birthYear = birthYear;
         this.ssn = ssn;
         this.numberOfSiblings = 0;
+        this.siblings = new Person[0];
     }
 
     public String getFirstname(){
@@ -40,7 +41,7 @@ class Person{
 
     public void addSibling(Person sibling){
         Person[] newSiblings = new Person[this.siblings.length + 1];
-        for (int i = 0; i < newSiblings.length; i++){
+        for (int i = 0; i < siblings.length; i++){
             newSiblings[i] = siblings[i];
         }
         newSiblings[newSiblings.length - 1] = sibling.clone();
@@ -49,5 +50,11 @@ class Person{
     }
 
     @Override 
-    public 
+    public Person clone(){
+        return new Person(this.firstname, this.lastname, this.birthDay, this.birthMonth, this.birthYear, this.ssn);
+    }
+
+    public Person[] getSiblings(){
+        return this.siblings;
+    }
 }
